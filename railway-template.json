@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/vergissberlin/railway/main/docs/railway-template.schema.json",
+  "schemaVersion": 1,
+  "project": "railwayapp-redis",
+  "repo": "vergissberlin/railwayapp-redis",
+  "displayName": "Redis",
+  "publishedCode": "redis-vb",
+  "image": "https://raw.githubusercontent.com/vergissberlin/railwayapp-redis/main/template-header.svg",
+  "description": "Run Redis 7 on Railway with official image and persistence hints.",
+  "workspaceAutomation": false
+}
