@@ -2,19 +2,31 @@
 
 ![Template Header](./template-header.svg)
 
-Deploy Redis 7 on Railway with the official Docker image.
+Redis is an open-source, in-memory data store used as a database, cache, message broker, and queue, prized for its speed and simple key-value model with support for richer structures like lists, sets, and hashes. This template deploys Redis 7 on Railway using the official Docker image, with append-only persistence and password authentication enabled by default.
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/redis-vb?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
+
+## Environment variables
+
+```bash
+REDIS_PASSWORD=replace-with-strong-password
+```
+
+`REDIS_PASSWORD` is required. The server is started with `--requirepass "$REDIS_PASSWORD"`, so Redis will not accept unauthenticated connections — set it as a generated secret in the Railway dashboard before deploying. Clients must authenticate with `AUTH <password>` (or `redis-cli -a <password>`).
 
 ## Persistence
 
 `railway.toml` declares `requiredMountPath = "/data"` for AOF/RDB files (append-only is enabled). Attach a Railway volume to that path before production traffic — Railway will prompt for it based on this setting, but it is not created automatically.
 
+## Health check
+
+The Dockerfile defines a `HEALTHCHECK` that runs `redis-cli -a "$REDIS_PASSWORD" ping` on an interval, since Redis has no HTTP endpoint to probe.
+
 ## Local
 
 ```bash
 docker build -t railwayapp-redis .
-docker run --rm -p 6379:6379 railwayapp-redis
+docker run --rm -e REDIS_PASSWORD=dev-password -p 6379:6379 railwayapp-redis
 ```
 
 <!-- footer -->
