@@ -6,6 +6,15 @@ Redis is an open-source, in-memory data store used as a database, cache, message
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/redis-vb?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+    Client(["📦 App / Client"]) -->|"Redis Protocol"| Proxy["Railway TCP Proxy"]
+    Proxy -->|"$PORT → 6379"| App["Container\nredis:7-alpine\n(--appendonly yes)"]
+    App --> Volume[("Volume\n/data")]
+```
+
 ## Environment variables
 
 ```bash
