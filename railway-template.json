@@ -5,7 +5,8 @@
   "repo": "vergissberlin/railwayapp-redis",
   "displayName": "Redis",
   "publishedCode": "redis-vb",
-  "image": "https://raw.githubusercontent.com/vergissberlin/railwayapp-redis/main/template-header.svg",
+  "image": "https://raw.githubusercontent.com/vergissberlin/railwayapp-redis/main/logo-redis.svg",
   "description": "Run Redis 7 on Railway with official image and persistence hints.",
-  "workspaceAutomation": false
+  "workspaceAutomation": false,
+  "logoFile": "logo-redis.svg"
 }
