@@ -38,6 +38,10 @@ docker build -t railwayapp-redis .
 docker run --rm -e REDIS_PASSWORD=dev-password -p 6379:6379 railwayapp-redis
 ```
 
+## 💬 Support
+
+Questions or feedback? Visit the [template forum on Railway Central Station](https://station.railway.com/templates/redis-823f8407).
+
 <!-- footer -->
 ---
 
