@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/vergissberlin/railwayapp-redis/compare/v0.1.2...v0.2.0) (2026-10-28)
+
+
+### Features
+
+* upgrade to Redis 8 (8.10.3) with upgrade/downgrade and license notes ([#14](https://github.com/vergissberlin/railwayapp-redis/issues/14)) ([5c8d1ad](https://github.com/vergissberlin/railwayapp-redis/commit/5c8d1ad2deafeced19c6a4cc32ba1a83a7f94881))
+
 ## [0.1.2](https://github.com/vergissberlin/railwayapp-redis/compare/v0.1.1...v0.1.2) (2026-10-28)
 
 
