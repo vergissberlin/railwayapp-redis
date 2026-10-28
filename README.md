@@ -2,7 +2,7 @@
 
 ![Template Header](./template-header.svg)
 
-Redis is an open-source, in-memory data store used as a database, cache, message broker, and queue, prized for its speed and simple key-value model with support for richer structures like lists, sets, and hashes. This template deploys Redis 7 on Railway using the official Docker image, with append-only persistence and password authentication enabled by default.
+Redis is an open-source, in-memory data store used as a database, cache, message broker, and queue, prized for its speed and simple key-value model with support for richer structures like lists, sets, and hashes. This template deploys Redis 8 on Railway using the official Docker image, with append-only persistence and password authentication enabled by default.
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/redis-2?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
@@ -11,7 +11,7 @@ Redis is an open-source, in-memory data store used as a database, cache, message
 ```mermaid
 flowchart LR
     Client(["📦 App / Client"]) -->|"Redis Protocol"| Proxy["Railway TCP Proxy"]
-    Proxy -->|"$PORT → 6379"| App["Container\nredis:7-alpine\n(--appendonly yes)"]
+    Proxy -->|"$PORT → 6379"| App["Container\nredis:8-alpine\n(--appendonly yes)"]
     App --> Volume[("Volume\n/data")]
 ```
 
@@ -30,6 +30,23 @@ REDIS_PASSWORD=replace-with-strong-password
 ## Health check
 
 The Dockerfile defines a `HEALTHCHECK` that runs `redis-cli -a "$REDIS_PASSWORD" ping` on an interval, since Redis has no HTTP endpoint to probe.
+
+## Upgrading from Redis 7.x to 8
+
+Template releases from `0.2.0` on ship Redis 8 (`redis:8.x-alpine`); `0.1.x` shipped Redis 7.4. Existing volumes need no migration. On first start, Redis 8 loads the existing AOF/RDB files from `/data` as they are. This was tested with 7.4.12 → 8.10.3 using AOF (base RDB + incremental AOF): strings, hashes incl. per-field TTLs (`HEXPIRE`), lists, sets, sorted sets, streams, HyperLogLog, bitmaps and key TTLs were preserved.
+
+Recommended steps:
+
+1. Take a backup first: run `redis-cli -a "$REDIS_PASSWORD" BGSAVE`, then copy `/data` (or create a Railway volume backup).
+2. Deploy the new template version and check `redis-cli -a "$REDIS_PASSWORD" INFO server | grep redis_version` and `DBSIZE`.
+
+### Downgrade warning
+
+**You cannot go back from 8 to 7.4 with the same volume.** As soon as Redis 8 rewrites its files (AOF rewrite, `BGSAVE`, or a regular snapshot), it writes RDB format version 15. Redis 7.4 refuses to start with `Can't handle RDB format version 15`. That is a startup error and it does not touch the data, but you would need to roll forward to 8 again. If you must stay on 7.4, keep the volume backup from step 1 and pin template release `0.1.x` (`FROM redis:7.4.12-alpine`).
+
+### Licensing change
+
+Redis 7.4 is available under RSALv2 or SSPLv1. From Redis 8.0, Redis is **tri-licensed: AGPLv3, RSALv2 or SSPLv1**, and you choose one. Running it unmodified as the database of your own application is normally fine under any of them. If you offer Redis itself as a service to third parties, or modify and distribute it, check the obligations of the license you pick (for example, AGPLv3 §13 source-offer requirements). See [redis.io/legal/licenses](https://redis.io/legal/licenses/). This template only contains the official image and a start command; the template files in this repository keep their own license.
 
 ## Local
 
