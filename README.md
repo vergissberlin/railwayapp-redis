@@ -4,7 +4,7 @@
 
 Redis is an open-source, in-memory data store used as a database, cache, message broker, and queue, prized for its speed and simple key-value model with support for richer structures like lists, sets, and hashes. This template deploys Redis 7 on Railway using the official Docker image, with append-only persistence and password authentication enabled by default.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/redis-vb?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/redis-2?referralCode=2_sIT9&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 ## 🏗️ Architecture
 
