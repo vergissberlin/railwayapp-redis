@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.1.2](https://github.com/vergissberlin/railwayapp-redis/compare/v0.1.1...v0.1.2) (2026-10-28)
+
+
+### Bug Fixes
+
+* **docker:** pin redis to 7.4.12-alpine ([#13](https://github.com/vergissberlin/railwayapp-redis/issues/13)) ([96b3bf2](https://github.com/vergissberlin/railwayapp-redis/commit/96b3bf2b604b25bcd60399882008a110f2f2af6f))
+* use square Redis logo for marketplace image instead of banner ([1afd543](https://github.com/vergissberlin/railwayapp-redis/commit/1afd543ec5bfda0c8450d32ac688ba1febf1d950))
+
+
+### Documentation
+
+* fix Railway deploy button link and add template forum link ([#10](https://github.com/vergissberlin/railwayapp-redis/issues/10)) ([6bd37f1](https://github.com/vergissberlin/railwayapp-redis/commit/6bd37f1fc3f44f54b74ef39dfbeebf5810f459e6))
+* refresh shared template footer badges ([f65c073](https://github.com/vergissberlin/railwayapp-redis/commit/f65c0732d0ef7122808d4be44e3678981fe3847a))
+
+
+### Chores
+
+* update shared template footer ([2cf0922](https://github.com/vergissberlin/railwayapp-redis/commit/2cf09226e0344f71189456c09af4c907322a987e))
+* update shared template footer ([ac34519](https://github.com/vergissberlin/railwayapp-redis/commit/ac345194b62f5069c20810378bb645d309f4067a))
+
 ## [0.1.1](https://github.com/vergissberlin/railwayapp-redis/compare/v0.1.0...v0.1.1) (2026-08-14)
 
 
