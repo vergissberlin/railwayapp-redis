@@ -1,4 +1,4 @@
-FROM redis:7-alpine
+FROM redis:7.4.12-alpine
 
 EXPOSE 6379
 
