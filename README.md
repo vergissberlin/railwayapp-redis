@@ -21,7 +21,7 @@ flowchart LR
 REDIS_PASSWORD=replace-with-strong-password
 ```
 
-`REDIS_PASSWORD` is required. The server is started with `--requirepass "$REDIS_PASSWORD"`, so Redis will not accept unauthenticated connections — set it as a generated secret in the Railway dashboard before deploying. Clients must authenticate with `AUTH <password>` (or `redis-cli -a <password>`).
+`REDIS_PASSWORD` is required. The server is started with `--requirepass "$REDIS_PASSWORD"`, so Redis will not accept unauthenticated connections — set it as a generated secret in the Railway dashboard before deploying. Clients must authenticate with `AUTH "$REDIS_PASSWORD"` (or `redis-cli -a "$REDIS_PASSWORD"`).
 
 ## Persistence
 
