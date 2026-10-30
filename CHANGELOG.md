@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/vergissberlin/railwayapp-redis/compare/v0.2.0...v0.2.1) (2026-10-30)
+
+
+### Documentation
+
+* use $REDIS_PASSWORD instead of the &lt;password&gt; placeholder in the README ([#16](https://github.com/vergissberlin/railwayapp-redis/issues/16)) ([a8f0f00](https://github.com/vergissberlin/railwayapp-redis/commit/a8f0f005a7c75987e9e76b1ef83eec0faf80c5ee))
+
 ## [0.2.0](https://github.com/vergissberlin/railwayapp-redis/compare/v0.1.2...v0.2.0) (2026-10-28)
 
 
